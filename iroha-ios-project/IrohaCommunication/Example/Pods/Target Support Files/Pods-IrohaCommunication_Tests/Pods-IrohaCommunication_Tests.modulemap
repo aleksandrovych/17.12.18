@@ -1,0 +1,6 @@
+framework module Pods_IrohaCommunication_Tests {
+  umbrella header "Pods-IrohaCommunication_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

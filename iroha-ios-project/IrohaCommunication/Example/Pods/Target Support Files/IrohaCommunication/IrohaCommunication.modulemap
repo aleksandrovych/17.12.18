@@ -1,0 +1,6 @@
+framework module IrohaCommunication {
+  umbrella header "IrohaCommunication-umbrella.h"
+
+  export *
+  module * { export * }
+}

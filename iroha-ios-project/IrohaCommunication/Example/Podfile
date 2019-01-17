@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'IrohaExample' do
+    pod 'IrohaCommunication', :path => '../'
+    pod 'SnapKit'
+    pod 'Realm'
+    
+    target 'IrohaCommunication_Tests' do
+        inherit! :search_paths
+    end
+end
