@@ -11,11 +11,21 @@ import IrohaCommunication
 
 class AccountCreator: NSObject {
     
+    @objc static internal let shared = AccountCreator()
+    
+    @objc private(set) dynamic var isAccountCreateTransactionSended = false
+    
+    private override init() {}
+    
     public func createAccount(with id: String) {
         do {
-            let keypair = self.createKey()
+            AccountCreator.shared.isAccountCreateTransactionSended = false
+            let keypair = AccountCreator.shared.createKey()
+            UserConfig.userPublicKey = keypair.0
+            UserConfig.userPrivateKey = keypair.1
             try createAccountIfNeeded(keypair, id: id)
         } catch {
+            AccountCreator.shared.isAccountCreateTransactionSended = false
             ErrorsHandler.shared.addError(error as NSError)
         }
     }
@@ -23,7 +33,7 @@ class AccountCreator: NSObject {
     typealias PublicKey = String;
     typealias PrivateKey = String;
     private func createKey() -> (PublicKey, PrivateKey) {
-        let keyPair = self.randomKeypair()
+        let keyPair = AccountCreator.shared.randomKeypair()
         return keyPair
     }
     
@@ -35,15 +45,16 @@ class AccountCreator: NSObject {
                 .build()
                 .signed(withSignatory: StreamLiveKeeper.unauthorizedSigner, signatoryPublicKey: NSObject.publicKey(StreamLiveKeeper.Accounts.unauthorizedAccountPublicKey) )
             
-            asyncPrint("Requesting account \(id)" as AnyObject)
+            AccountCreator.shared.asyncPrint("Requesting account \(id)" as AnyObject)
             
             return StreamLiveKeeper.networkService.execute(queryRequest)
                 .onThen({ (response) -> IRPromise? in
-                    return self.decideOnAccountQuery(response: response, keyPair: keypair, id: id)
-                }).onThen({ [unowned self] (result) -> IRPromise? in
+                    return AccountCreator.shared.decideOnAccountQuery(response: response, keyPair: keypair, id: id)
+                }).onThen({ (result) -> IRPromise? in
                     if let sentTransactionHash = result as? Data {
-                        self.asyncPrint("Transaction has been sent \((sentTransactionHash as NSData).toHexString())" as AnyObject)
-                        return StreamLiveKeeper.networkService.onTransactionStatus(.committed, withHash: sentTransactionHash)
+                        AccountCreator.shared.isAccountCreateTransactionSended = true
+                        AccountCreator.shared.asyncPrint("Transaction has been sent \((sentTransactionHash as NSData).toHexString())" as AnyObject)
+                         return StreamLiveKeeper.networkService.onTransactionStatus(.committed, withHash: sentTransactionHash)
                     } else {
                         return IRPromise(result: result)
                     }
@@ -74,6 +85,7 @@ class AccountCreator: NSObject {
                 return IRPromise(result: error as NSError)
             }
         } else if let _ = response as? IRAccountResponse {
+            AccountCreator.shared.isAccountCreateTransactionSended = false
             asyncPrint("Account \(id) already exists" as AnyObject)
             return IRPromise(result: nil)
         } else {

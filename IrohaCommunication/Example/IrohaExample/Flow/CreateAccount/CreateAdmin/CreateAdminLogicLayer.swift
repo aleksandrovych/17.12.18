@@ -14,7 +14,7 @@ protocol CreateAdminLogicLayerPublic {
 
 class CreateAdminLogicLayer: BackLogicLayer, CreateAdminLogicLayerPublic {
     
-    lazy var creator = AccountCreator()
+    lazy var anotherManagerInteractor = InteractionWithAnotherManagerAccount()
     
     @objc dynamic var isNameValid: Bool = true
     var accountName: String = "" {
@@ -24,7 +24,7 @@ class CreateAdminLogicLayer: BackLogicLayer, CreateAdminLogicLayerPublic {
     }
     
     @objc dynamic var isDomainValid: Bool = true
-    var domainName: String = "" {
+    var domainName: String = "tecsynt" {
         didSet {
             isDomainValid = isValidName(input: domainName)
         }
@@ -32,7 +32,7 @@ class CreateAdminLogicLayer: BackLogicLayer, CreateAdminLogicLayerPublic {
     
     /* Account of another manager, that should accept you request and give you manager permisions */
     @objc dynamic var isManagerAccountIdValid: Bool = false
-    var managerAccountId: String = "" {
+    var managerAccountId: String = "first_manager_bot@tecsynt" {
         didSet {
             isManagerAccountIdValid = isValidId(input: managerAccountId)
         }
@@ -59,6 +59,25 @@ class CreateAdminLogicLayer: BackLogicLayer, CreateAdminLogicLayerPublic {
     }
     
     @objc func saveCallback() {
-        creator.createAccount(with: "\(accountName)@\(domainName)".lowercased())
+        let sender = "\(accountName)@\(domainName)".lowercased()
+        AccountCreator.shared.createAccount(with: sender)
+        
+        if InteractionWithAdminBot.Constants.firstManagerBot == managerAccountId {
+            InteractionWithAdminBot.shared.requestPermisionsIfPosible(sender: sender)
+            UserConfig.userId = sender
+            guard let root = UIApplication.shared.keyWindow?.rootViewController else {
+                return
+            }
+            
+            root.dismiss(animated: false) {
+                root.show(ViewAssetViewController(), sender: self)
+            }
+            
+            return
+        }
+        
+        /* Request admin permissions from another already exist account */
+        anotherManagerInteractor.requestManagerPermissions(from: managerAccountId)
+        
     }
 }

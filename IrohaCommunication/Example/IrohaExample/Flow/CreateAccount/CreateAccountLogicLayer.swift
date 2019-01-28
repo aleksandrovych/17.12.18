@@ -20,7 +20,7 @@ class CreateAccountLogicLayer: BackLogicLayer, CreateAccountLogicLayerPublic {
     override init() {
         super.init()
         DispatchQueue.global().async {
-            StreamLiveKeeper.shared.startStream { /* called after first(create account) transaction */ }
+            StreamLiveKeeper.shared.startStream { /* called after first(create account in my case) transaction */ }
         }
     }
     

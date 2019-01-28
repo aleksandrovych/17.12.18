@@ -27,11 +27,10 @@ class StreamLiveKeeper: NSObject, StreamLiveKeeperPublic {
     }
     
     public struct Accounts {
-        static let unauthorizedAccountId = "admin@test";
-        static let unauthorizedAccountPublicKey = "313a07e6384776ed95447710d15e59148473ccfc052a681317a72a69f2a49910"; // admin.pub
+        static let unauthorizedAccountId = "unauthorized@tecsynt";
+        static let unauthorizedAccountPublicKey = "c77de3a26ca96545e1b1fae01b951798f356b4f7d7eeb7f64f1eca216376b6d4";
         static let unauthorizedAccountPrivateKey =
-            //
-        "f101537e319568c765b2cc89698325604991dca57b9716b58016b253506cab70"; // admin.priv
+        "0382d5dd3972576b78273a6c896fac4f76c253366757dea2e484e67decf51043";
     }
     
     private struct URLs {

@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         
         do {
             try startCommitStream()
-            /*
+            
             _ = createAccount()
                 .onThen({ (result) -> IRPromise? in
                     return self.mintAsset()
@@ -82,14 +82,14 @@ class ViewController: UIViewController {
                 }).onError({ (error) -> IRPromise? in
                     print("Scenario failed: \(error)")
                     return nil
-                })*/
+                })
         } catch {
             print("Error: \(error)")
         }
     }
 
     // MARK: Private
-/*
+
     private func createAccount() -> IRPromise {
         do {
             let queryRequest = try IRQueryBuilder(creatorAccountId: adminAccountId)
@@ -114,7 +114,7 @@ class ViewController: UIViewController {
             return IRPromise(result: error as NSError)
         }
     }
-*/
+
     private func decideOnAccountQuery(response: Any?) -> IRPromise {
         if let errorResponse = response as? IRErrorResponse {
             if errorResponse.reason == .noAccount {

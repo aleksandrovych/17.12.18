@@ -85,7 +85,7 @@ extension TextStackViewView: UITextFieldDelegate {
             return true
         }
         
-        let newString = NSString(string: text).replacingCharacters(in: range, with: string)
+        let newString = NSString(string: text).replacingCharacters(in: range, with: string).lowercased()
         
         self.logicLayer.fieldText = newString
         

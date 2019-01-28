@@ -22,4 +22,12 @@ class AddAssetLogicLayer: BackLogicLayer, AddAssetLogicLayerPublic {
             root.show(ViewAssetViewController(), sender: self)
         }
     }
+    
+    override func backCallback() {
+        guard let root = UIApplication.shared.keyWindow?.rootViewController else {
+            return
+        }
+        
+        root.dismiss(animated: true, completion: nil)
+    }
 }

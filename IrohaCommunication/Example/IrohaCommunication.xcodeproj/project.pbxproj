@@ -47,6 +47,10 @@
 		955143DC21F229A4004C41C0 /* UIStackView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955143DB21F229A4004C41C0 /* UIStackView+Utils.swift */; };
 		955143DF21F24198004C41C0 /* NSObject+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955143DE21F24198004C41C0 /* NSObject+Chaining.swift */; };
 		955143E121F248B1004C41C0 /* AccountCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955143E021F248B1004C41C0 /* AccountCreator.swift */; };
+		955143E321F7342F004C41C0 /* InteractionWithAdminBot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955143E221F7342F004C41C0 /* InteractionWithAdminBot.swift */; };
+		955143E521F73772004C41C0 /* InteractionWithAnotherManagerAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955143E421F73772004C41C0 /* InteractionWithAnotherManagerAccount.swift */; };
+		9570129F21FF95AA00DCCFC2 /* AccountDetailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9570129E21FF95AA00DCCFC2 /* AccountDetailLoader.swift */; };
+		957012A221FF9A2F00DCCFC2 /* UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957012A121FF9A2F00DCCFC2 /* UserConfig.swift */; };
 		95FA834421EE1E58008C8760 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA834321EE1E58008C8760 /* LandingViewController.swift */; };
 		95FA834721EE1F53008C8760 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA834621EE1F53008C8760 /* UIViewController+Utils.swift */; };
 		95FA834921EE2219008C8760 /* ConstraintViewDSL+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA834821EE2219008C8760 /* ConstraintViewDSL+Utils.swift */; };
@@ -138,6 +142,10 @@
 		955143DB21F229A4004C41C0 /* UIStackView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Utils.swift"; sourceTree = "<group>"; };
 		955143DE21F24198004C41C0 /* NSObject+Chaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Chaining.swift"; sourceTree = "<group>"; };
 		955143E021F248B1004C41C0 /* AccountCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreator.swift; sourceTree = "<group>"; };
+		955143E221F7342F004C41C0 /* InteractionWithAdminBot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionWithAdminBot.swift; sourceTree = "<group>"; };
+		955143E421F73772004C41C0 /* InteractionWithAnotherManagerAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionWithAnotherManagerAccount.swift; sourceTree = "<group>"; };
+		9570129E21FF95AA00DCCFC2 /* AccountDetailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailLoader.swift; sourceTree = "<group>"; };
+		957012A121FF9A2F00DCCFC2 /* UserConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfig.swift; sourceTree = "<group>"; };
 		95FA834321EE1E58008C8760 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		95FA834621EE1F53008C8760 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		95FA834821EE2219008C8760 /* ConstraintViewDSL+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintViewDSL+Utils.swift"; sourceTree = "<group>"; };
@@ -247,6 +255,7 @@
 		02E31A2521DC050E00B33B66 /* IrohaExample */ = {
 			isa = PBXGroup;
 			children = (
+				957012A021FF9A1A00DCCFC2 /* Storage */,
 				955143C921F10324004C41C0 /* Services */,
 				95FA836C21EF693F008C8760 /* Flow */,
 				95FA835721EE44FC008C8760 /* Theme */,
@@ -389,6 +398,9 @@
 				955143CA21F1034B004C41C0 /* StreamLiveKeeper.swift */,
 				955143CC21F10670004C41C0 /* ErrorsHandler.swift */,
 				955143E021F248B1004C41C0 /* AccountCreator.swift */,
+				955143E221F7342F004C41C0 /* InteractionWithAdminBot.swift */,
+				955143E421F73772004C41C0 /* InteractionWithAnotherManagerAccount.swift */,
+				9570129E21FF95AA00DCCFC2 /* AccountDetailLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -417,6 +429,14 @@
 				955143DE21F24198004C41C0 /* NSObject+Chaining.swift */,
 			);
 			path = "Foundation+Chaining";
+			sourceTree = "<group>";
+		};
+		957012A021FF9A1A00DCCFC2 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				957012A121FF9A2F00DCCFC2 /* UserConfig.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		95FA834221EE1E2B008C8760 /* Landing */ = {
@@ -762,6 +782,8 @@
 			files = (
 				95FA838621EF9526008C8760 /* CreateAccountViewController.swift in Sources */,
 				95FA837121EF6CB1008C8760 /* CreateAssetViewController.swift in Sources */,
+				955143E521F73772004C41C0 /* InteractionWithAnotherManagerAccount.swift in Sources */,
+				955143E321F7342F004C41C0 /* InteractionWithAdminBot.swift in Sources */,
 				95FA838321EF838C008C8760 /* BackLogicLayer.swift in Sources */,
 				955143D021F1209A004C41C0 /* Iroha+Utils.swift in Sources */,
 				02E31A2921DC050E00B33B66 /* ViewController.swift in Sources */,
@@ -786,6 +808,7 @@
 				02E31A2721DC050E00B33B66 /* AppDelegate.swift in Sources */,
 				95FA836B21EF6671008C8760 /* UIControl+Chaining.swift in Sources */,
 				955143D621F20650004C41C0 /* TextStackViewLogicLayer.swift in Sources */,
+				957012A221FF9A2F00DCCFC2 /* UserConfig.swift in Sources */,
 				95FA836021EE900E008C8760 /* LandingLogicLayer.swift in Sources */,
 				95FA834421EE1E58008C8760 /* LandingViewController.swift in Sources */,
 				95FA837D21EF74C1008C8760 /* LoginUserLogicLayer.swift in Sources */,
@@ -793,6 +816,7 @@
 				95FA834921EE2219008C8760 /* ConstraintViewDSL+Utils.swift in Sources */,
 				95FA838C21EF99E0008C8760 /* LoginViewController.swift in Sources */,
 				95FA836321EE975E008C8760 /* CreateUserViewController.swift in Sources */,
+				9570129F21FF95AA00DCCFC2 /* AccountDetailLoader.swift in Sources */,
 				95FA838E21EF99F3008C8760 /* LoginLogicLayer.swift in Sources */,
 				955143D321F20622004C41C0 /* TextStackViewView.swift in Sources */,
 				95FA838821EF9536008C8760 /* CreateAccountLogicLayer.swift in Sources */,
